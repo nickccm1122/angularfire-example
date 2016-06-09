@@ -1,0 +1,91 @@
+<div class="row"  ng-controller="MainCtrl">
+  <h3>Example</h3>
+  <p>This is a demo of making use of angularfire SDK to build a 
+  3-way binding connecting view, controller and firebase. Also 
+  demostrates the relation of objects in firebase as the 
+  objects in firebase is completely denormalized.</p>
+  <br>
+  <!-- Add user -->
+  <div class="card card-block">
+    <h5 class="card-title">Add new user</h5>
+    <p class="card-text">
+      <table class="table">
+        <tbody>
+          <tr>
+            <td>
+              <input type="text" class="form-control" placeholder="User Name"
+              name="data.newUserName" ng-model="data.newUserName">
+            </td>
+            <td>
+              <button type="button" class="btn btn-primary"
+              ng-click="addUser()">Add</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </p>
+  </div>
+  <!-- Users selection -->
+  <div class="card card-block">
+    <h5 class="card-title">Select user</h5>
+    <p class="card-text">
+      <select class="form-control" id="user" ng-model="data.selectedUser">
+        <option></option>
+        <option ng-repeat="user in users" value={{user.$id}}>{{user.name}}</option>
+      </select>
+      <br>
+      <!-- Items belong to user -->
+      <h5>Items</h5>
+      <table class="table">
+        <thead class="thead-default">
+          <tr>
+            <th>#</th>
+            <th>Item Name</th>
+            <th>Item Desc</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="item in items">
+            <th scope="row">{{$index+1}}</th>
+            <td>
+              <input type="text" class="form-control" placeholder="Item Name" 
+              ng-model="item.name">
+            </td>
+            <td>
+              <input type="text" class="form-control" placeholder="Item Desc"
+              ng-model="item.desc">
+            </td>
+            <td>
+              <button type="button" class="btn btn-danger" ng-click="removeItem($index, item.$id)">Remove</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </p>
+  </div>
+  <!-- Add item to user -->
+  <div class="card card-block">
+    <h5 class="card-title">Add item to {{data.currentUser.name || "user"}}</h5>
+    <p class="card-text">
+      <table class="table">
+        <tbody>
+          <tr>
+            <td>
+              <input type="text" class="form-control" placeholder="Item Name"
+              ng-model="newItem.name">
+            </td>
+            <td>
+              <input type="text" class="form-control" placeholder="Item Desc"
+              ng-model="newItem.desc">
+            </td>
+            <td>
+              <button type="button" class="btn btn-primary"
+              ng-click="addItemToCurrentUser()">Add</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </p>
+  </div>
+</div>
