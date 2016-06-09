@@ -31,5 +31,7 @@ You'll need to initialize the Firebase SDK. You can find more details on the
 - Run `grunt` for building and `grunt serve` for preview.
 
 ## 5. Testing
-
 Running `grunt test` will run the unit tests with karma.
+
+## 6. Live Demo
+[Demo](https://relation-example.firebaseapp.com/)
